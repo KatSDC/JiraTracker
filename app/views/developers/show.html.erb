@@ -1,0 +1,42 @@
+<section class="hero-unit">
+  <h1 style="text-align:center;"><%= @developer.developer_name %></h1>
+
+  <br/>
+
+  <p>
+  	<strong>Name:</strong>
+  	<%= @developer.developer_name %>
+	</p>
+
+	<p>
+  	<strong>Email:</strong>
+  	<%= @developer.developer_email %>
+	</p>
+
+  <div>
+	<table class="table table-hover">
+		<thead>
+			<tr>
+				<td>Ticket ID</td>
+				<td>Name</td>
+				<td>Task Type</td>
+				<td>Status</td>
+				<td>Priority</td>
+				<td>Assigned To</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @developer.tickets.each do |ticket| %>
+				<tr>
+					<td><%= ticket.ticket_id %></td>
+					<td><%= link_to ticket.title, ticket %></td>
+					<td><%= ticket.task_type %></td>
+					<td><%= ticket.status %></td>
+					<td><%= ticket.priority %></td>
+					<td><%= ticket.assignee %></td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+  </div>
+ </section>
