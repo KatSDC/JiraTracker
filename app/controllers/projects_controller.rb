@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+before_action :authenticate_user!
 
   def index
     @projects = Project.all
@@ -6,5 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find params[:id]
+    @tickets = Ticket.all    
   end
+
 end

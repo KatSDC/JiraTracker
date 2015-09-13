@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  developer_name: MyString
+  developer_email: MyString
+  num_tickets: 1
+
+two:
+  developer_name: MyString
+  developer_email: MyString
+  num_tickets: 1

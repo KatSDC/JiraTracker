@@ -1,0 +1,29 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  ticket_id: 1
+  title: MyString
+  description: MyText
+  task_type: MyString
+  status: MyString
+  priority: MyString
+  estimate: 1
+  time_spent: 1
+  progress: 1
+  assignee: MyString
+  project_id: 1
+  developer_id: 1
+
+two:
+  ticket_id: 1
+  title: MyString
+  description: MyText
+  task_type: MyString
+  status: MyString
+  priority: MyString
+  estimate: 1
+  time_spent: 1
+  progress: 1
+  assignee: MyString
+  project_id: 1
+  developer_id: 1

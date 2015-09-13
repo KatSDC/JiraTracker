@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150617021559) do
+ActiveRecord::Schema.define(version: 20150617154807) do
 
   create_table "developers", force: :cascade do |t|
     t.string   "developer_name"
@@ -38,12 +38,12 @@ ActiveRecord::Schema.define(version: 20150617021559) do
     t.string   "priority"
     t.integer  "estimate"
     t.integer  "time_spent"
-    t.string   "progress"
+    t.integer  "progress"
     t.string   "assignee"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
     t.integer  "project_id"
     t.integer  "developer_id"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
   end
 
   create_table "users", force: :cascade do |t|

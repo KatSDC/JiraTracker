@@ -1,0 +1,33 @@
+<section class="hero-unit">
+  <h1 style="text-align:center;">Tickets</h1>
+
+  <br/>
+
+  <div>
+	<table class="table table-hover bg-info">
+		<thead>
+			<tr>
+				<td>Ticket ID</td>
+				<td>Title</td>
+				<td>Task Type</td>
+				<td>Status</td>
+				<td>Priority</td>
+			</tr>
+		</thead>
+		<tbody>
+			<% @tickets.each do |ticket| %>
+				<tr>
+					<td><%= ticket.ticket_id %></td>
+					<td><%= link_to ticket.title, ticket %></td>
+					<td><%= ticket.task_type %></td>
+					<td><%= ticket.status %></td>
+					<td><%= ticket.priority %></td>
+				</tr>
+				<tr>
+					<%= will_paginate @tickets %>
+				</tr>		
+			<% end %>	
+		</tbody>
+	</table>
+  </div>
+ </section>

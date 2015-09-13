@@ -5,10 +5,13 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+
+require 'json'
+
 client = JIRA::Client.new :site => "https://katsdc.atlassian.net",
                           :auth_type => :basic,
-                          :username => "admin",
-                          :password => "k1schro!",
+                          :username => ENV['USERNAME'],
+                          :password => ENV['PASSWORD'],
                           :context_path => "",
                           :use_ssl => true
 
@@ -28,18 +31,17 @@ end
 issues = client.Issue.jql('')
 
 @tickets = issues.map do |ticket|
-  pp ticket_id: ticket.attrs["fields"]["issuetype"]["id"]
-  pp project_id: ticket.attrs["fields"]["project"]["id"]
-  ticket_record = Ticket.find_or_create_by ticket_id: ticket.attrs["fields"]["issuetype"]["id"],
+  # puts JSON.pretty_generate(JSON.parse(ticket.to_json))
+  ticket_record = Ticket.find_or_create_by ticket_id: ticket.attrs["id"],
                                            project_id: ticket.attrs["fields"]["project"]["id"]
   ticket_record.update_attributes title: ticket.attrs["fields"]["summary"],
-                           description: ticket.attrs["fields"]["description"],
-                           task_type: ticket.attrs["fields"]["issuetype"]["name"],
-                           status: ticket.attrs["fields"]["status"]["name"],
-                           priority: ticket.attrs["fields"]["priority"]["name"],
-                           estimate: ticket.attrs["fields"].try(:[], "timeestimate"),
-                           time_spent: ticket.attrs["fields"].try(:[], "timespent"),
-                           progress: ticket.attrs["fields"]["progress"].try(:[], "percent"),
-                           assignee: ticket.attrs["fields"]["assignee"].try(:[], "displayName"),
-                           developer: Developer.find_by(developer_email: ticket.attrs["fields"]["assignee"].try(:[], "emailAddress"))
+                                  description: ticket.attrs["fields"]["description"],
+                                  task_type: ticket.attrs["fields"]["issuetype"]["name"],
+                                  status: ticket.attrs["fields"]["status"]["name"],
+                                  priority: ticket.attrs["fields"]["priority"]["name"],
+                                  estimate: ticket.attrs["fields"].try(:[], "timeestimate"),
+                                  time_spent: ticket.attrs["fields"].try(:[], "timespent"),
+                                  progress: ticket.attrs["fields"]["progress"].try(:[], "percent"),
+                                  assignee: ticket.attrs["fields"]["assignee"].try(:[], "displayName"),
+                                  developer: Developer.find_by(developer_email: ticket.attrs["fields"]["assignee"].try(:[], "emailAddress"))
 end

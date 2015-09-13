@@ -1,0 +1,66 @@
+<section class="hero-unit">
+  <h1 style="text-align:center;"><%= @ticket.title %></h1>
+
+  <br/>
+
+  	<strong>Ticket ID:</strong>
+	<%= @ticket.ticket_id %>
+	</p>
+
+	<p>
+	<strong>Title:</strong>
+	<%= @ticket.title %>
+	</p>
+
+	<p>
+	<strong>Description:</strong>
+	<%= @ticket.description %>
+	</p>
+
+	<p>
+	<strong>Task Type:</strong>
+	<%= @ticket.task_type %>
+	</p>
+
+	<strong>Status:</strong>
+	<%= @ticket.status %>
+	</p>
+
+	<p>
+	<strong>Priority:</strong>
+	<%= @ticket.priority %>
+	</p>
+
+	<p>
+	<strong>Estimate (hours):</strong>
+	<% if @ticket.estimate == nil %>
+		<%= puts '' %>
+	<% else %>
+		<%= @ticket.estimate / 60 / 60 %>
+	<% end %>
+	</p>
+
+	<p>
+	<strong>Time Spent (hours):</strong>
+	<% if @ticket.time_spent == nil %>
+		<%= puts '' %>
+	<% else %>
+		<% @ticket.time_spent / 60 / 60 %>
+	<% end %>
+	</p>
+
+	<p>
+	<strong>Progress:</strong>
+	<% if @ticket.progress == nil %>
+		<%= puts '' %>
+	<% else %>
+		<%= @ticket.progress.to_s + '%' %>
+	<% end %>
+	</p>
+
+	<p>
+	<strong>Assigned To:</strong>
+	<%= @ticket.assignee %>
+	</p>
+
+</section>
