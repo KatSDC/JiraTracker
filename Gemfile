@@ -28,9 +28,9 @@ gem 'will_paginate', '~> 3.0.6'
 
 ruby "2.2.1"
 
-group :production do
-  gem 'pg'
-end
+#group :production do
+#  gem 'pg'
+#end
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'

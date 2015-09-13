@@ -2,7 +2,11 @@ class TicketsController <ApplicationController
 before_action :authenticate_user!
 
   def index
-    @tickets = Ticket.all
+    if params[:search]
+      @tickets = Ticket.search(params[:search])
+    else
+      @tickets = Ticket.all
+    end
   end
 
   def show
