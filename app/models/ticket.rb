@@ -6,7 +6,16 @@ class Ticket < ActiveRecord::Base
     @tickets = Ticket.paginate(:page => params[:page], :per_page => 10)
   end
 
-    def self.search(query)
-    where('title LIKE :query OR ticket_id LIKE :query', query: "%#{query}%")
+  def self.search(query)
+  	dquery = "%#{query.to_s.downcase}%"
+  	begin
+  		# Attempt to parse query as an Integer.  If this fails, then it
+  		# will raise an ArgumentError
+  		iquery = Integer(query)
+	rescue ArgumentError
+		where('LOWER(title) LIKE ?', dquery)
+	else
+		where('LOWER(title) LIKE ? OR ticket_id = ?', dquery, iquery)
+	end
   end
 end
