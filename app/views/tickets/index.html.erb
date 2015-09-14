@@ -37,6 +37,8 @@
 			<% end %>	
 		</tbody>
 	</table>
-	<%= will_paginate @tickets %>
+	<div class="pagination text-center">
+	<%= will_paginate @tickets, renderer: BootstrapPagination::Rails %>
+	</div>
   </div>
  </section>

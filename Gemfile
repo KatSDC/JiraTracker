@@ -25,6 +25,7 @@ gem 'jira-ruby', :github => "KatSDC/jira-ruby", :require => 'jira'
 gem "twitter-bootstrap-rails", '~> 2.2.7'
 gem 'devise'
 gem 'will_paginate', '~> 3.0.6'
+gem 'will_paginate-bootstrap'
 
 ruby "2.2.1"
 
