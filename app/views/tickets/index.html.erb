@@ -33,12 +33,10 @@
 					<td><%= ticket.task_type %></td>
 					<td><%= ticket.status %></td>
 					<td><%= ticket.priority %></td>
-				</tr>
-				<tr>
-					<%= will_paginate @tickets %>
 				</tr>		
 			<% end %>	
 		</tbody>
 	</table>
+	<%= will_paginate @tickets %>
   </div>
  </section>

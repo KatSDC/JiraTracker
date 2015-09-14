@@ -3,7 +3,7 @@ class Ticket < ActiveRecord::Base
   belongs_to :developer
 
   def index
-    @tickets = Ticket.paginate(:page => params[:page], :per_page => 10)
+    @tickets = Ticket.all
   end
 
   def self.search(query)
