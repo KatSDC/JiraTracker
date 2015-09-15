@@ -2,10 +2,6 @@ class Ticket < ActiveRecord::Base
   belongs_to :project
   belongs_to :developer
 
-  def index
-    @tickets = Ticket.all
-  end
-
   def self.search(query)
   	dquery = "%#{query.to_s.downcase}%"
   	begin

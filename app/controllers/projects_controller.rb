@@ -2,7 +2,11 @@ class ProjectsController < ApplicationController
 before_action :authenticate_user!
 
   def index
-    @projects = Project.all
+    if params[:search]
+      @projects = Project.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
+    else
+      @projects = Project.paginate(:page => params[:page], :per_page => 10)
+    end
   end
 
   def show
