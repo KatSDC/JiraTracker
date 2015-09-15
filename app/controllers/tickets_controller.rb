@@ -4,11 +4,10 @@ require 'will_paginate/array'
 
   def index
     if params[:search]
-      @tickets = Ticket.search(params[:search])
+      @tickets = Ticket.search(params[:search]).paginate(:page => params[:page], :per_page => 10)
     else
-      @tickets = Ticket.all
+      @tickets = Ticket.paginate(:page => params[:page], :per_page => 10)
     end
-    @tickets = Ticket.paginate(:page => params[:page], :per_page => 10)
   end
 
   def show
